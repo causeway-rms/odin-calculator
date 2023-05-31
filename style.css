@@ -25,7 +25,7 @@
     font-size: medium;
 }
 
-.numbers, .operators {
+.numbers, .operators, #clear {
     flex-basis: 25%;
     box-sizing: border-box;
 }

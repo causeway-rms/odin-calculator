@@ -1,19 +1,19 @@
 // Math functions to be called
 
 function add(a,b) {
-    console.log(a+b);
+    displayValue.value = a+b;
 }
 
 function subtract(a,b) {
-    console.log(a-b);
+    displayValue.value = a-b;
 }
 
 function multiply(a,b) {
-    console.log(a*b);
+    displayValue.value = a*b;
 }
 
 function divide(a,b) {
-    console.log(a/b);
+    displayValue.value = a/b;
 }
 
 // The variables
@@ -39,7 +39,7 @@ function operate(op,x,y) {
             divide(x,y);
             break;
         default:
-            console.log('Invalid input');
+            break;
     }
 }
 
@@ -53,3 +53,20 @@ for(let i = 0; i < displayNumbers.length; i++) {
         displayValue.value = displayValue.value + displayNumbers[i].textContent;
     })
 }
+
+// Value storage and triggering function
+
+const selectOperator = document.querySelectorAll('.operators');
+for(let i =0; i < selectOperator.length; i++) {
+    selectOperator[i].addEventListener('click', function() {
+        if (firstNumber == undefined) {
+            firstNumber = parseInt(displayValue.value);
+            operator = selectOperator[i].id;
+            displayValue.value = "";
+        }
+        else {
+            secondNumber = parseInt(displayValue.value);
+            operate(operator,firstNumber,secondNumber);
+        }
+    });
+};
